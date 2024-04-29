@@ -2,26 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView, StyleSheet, Button, View, Text } from "react-native";
 import { purchaseService } from "../services/PurchaseService"
 import { LoadingIndicator } from "../components";
-
-export const LastPurchase = ({ purchase }) => {
-  return (
-    <View>
-      <Text>Última Compra</Text>
-      <View>
-        {purchase.items.map((item, index) => {
-          return (
-            <View key={index}>
-              <Text>{item.product.description}</Text>
-              <Text>{item.product.unit_price}</Text>
-              <Text>{item.qtt}</Text>
-            </View>
-          )
-        })}
-      </View>
-      <Text>{purchase.total}</Text>
-    </View>
-  )
-}
+import { LastPurchase } from "../components/last-purchase";
 
 export const HomeScreen = ({ navigation }) => {
   const [lastPurchase, setLastPurchase] = useState(null);
