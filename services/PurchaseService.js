@@ -1,10 +1,12 @@
 import { auth } from "../config";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
-import { firebaseCommons } from "./firebaseCommons";
 
-class PurchaseService extends firebaseCommons {
-    
+class PurchaseService {
+    getRefencedFieldPath(RefencedFieldPathObj) {
+        return RefencedFieldPathObj._key.path.segments.join('/').split('/documents/')[1];
+    }
+
     async getAll() {
         const userRef = doc(db, "users", auth.currentUser.uid);
         const userSnap = await getDoc(userRef);
