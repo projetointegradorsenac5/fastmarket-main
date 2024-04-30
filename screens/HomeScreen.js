@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet, Button, View, Text } from "react-native";
 import { purchaseService } from "../services/PurchaseService"
 import { LoadingIndicator } from "../components";
 import { LastPurchase } from "../components/last-purchase";
+import Header from "../components/header";
 
 export const HomeScreen = ({ navigation }) => {
   const [lastPurchase, setLastPurchase] = useState(null);
@@ -22,7 +23,7 @@ export const HomeScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-
+<Header/>
       {loading ? (
         <LoadingIndicator />
       ) : (
@@ -35,7 +36,6 @@ export const HomeScreen = ({ navigation }) => {
         </>
       )}
 
-      <Button title="Go To Purchase History" onPress={() => navigation.navigate("PurchaseHistory")} />
     </SafeAreaView>
   );
 };
