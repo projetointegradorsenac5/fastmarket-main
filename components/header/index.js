@@ -11,8 +11,7 @@ import styles from './style';
         <View style={styles.profile}>
           {/* Adicione aqui a imagem do perfil */}
         </View>
-        {/* Título */}
-        <Text style={styles.headerTitle}>Meu Perfil</Text>
+
       </View>
     </View>
   );

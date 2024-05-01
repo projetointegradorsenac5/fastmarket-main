@@ -41,5 +41,10 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 14, // Diminui o tamanho da fonte do texto do botão
     },
+
+    description: {
+        width: 100 ,
+        
+    }
     
 });

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, StyleSheet, Button, View, Text } from "react-native";
+import { SafeAreaView, StyleSheet, Button, View, Text, ScrollView } from "react-native";
 import { purchaseService } from "../services/PurchaseService"
 import { LoadingIndicator } from "../components";
 import { LastPurchase } from "../components/last-purchase";
 import Header from "../components/header";
+import Destaque from "../components/emphasis";
 
 export const HomeScreen = ({ navigation }) => {
   const [lastPurchase, setLastPurchase] = useState(null);
@@ -23,6 +24,7 @@ export const HomeScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <ScrollView>
 <Header/>
       {loading ? (
         <LoadingIndicator />
@@ -35,7 +37,8 @@ export const HomeScreen = ({ navigation }) => {
           )}
         </>
       )}
-
+<Destaque/>
+</ScrollView>
     </SafeAreaView>
   );
 };

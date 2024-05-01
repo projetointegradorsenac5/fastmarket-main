@@ -10,11 +10,11 @@ export const LastPurchase = ({ purchase }) => {
             <View style={styles.filho}>
                 {purchase.items.map((item, index) => {
                     return (
-                        <View key={index}>
-                            <Image width={100} height={100} source={{uri: item.product.imgUrl}}></Image>
-                            <Text>{item.product.description}</Text>
+                        <View style={styles.description} key={index}>
+                            <Image width={100} height={100} source={{uri: item.product.img_url}}></Image>
+                            {/* <Text>{item.product.description}</Text>
                             <Text>{item.product.unit_price}</Text>
-                            <Text>{item.qtt}</Text>
+                            <Text>{item.qtt}</Text> */}
                         </View>
                     )
                 })}
