@@ -1,26 +1,32 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { purchaseService } from "../services/PurchaseService";
 import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { LoadingIndicator } from "../components";
 
 export const Purchase = ({ purchase }) => {
-    const date = new Date(purchase.date.seconds).toString();
+    const formatDate = (date) => {
+        const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+        return new Date(date.seconds * 1000).toLocaleDateString('pt-BR', options);
+    };
+
+    const formattedDate = formatDate(purchase.date);
 
     return (
         <View style={styles.purchaseContainer}>
-            <View>
+            <Text style={styles.sectionTitle}>Itens:</Text>
+            <View style={styles.itemsContainer}>
                 {purchase.items.map((item, index) => {
                     return (
-                        <View key={index}>
-                            <Text>{item.product.description}</Text>
-                            <Text>{item.product.unit_price}</Text>
-                            <Text>{item.qtt}</Text>
+                        <View style={styles.itemContainer} key={index}>
+                            <Text style={styles.itemDescription}>{item.product.description}</Text>
+                            <Text style={styles.itemPrice}>Preço: R$ {item.product.unit_price}</Text>
+                            <Text style={styles.itemQuantity}>Quantidade: {item.qtt}</Text>
                         </View>
                     )
                 })}
             </View>
-            <Text>total: {purchase.total}</Text>
-            <Text>data: {date}</Text>
+            <Text style={styles.total}>Total: R$ {purchase.total}</Text>
+            <Text style={styles.date}>Data: {formattedDate}</Text>
         </View>
     )
 }
@@ -53,7 +59,7 @@ export const PurchaseHistoryScreen = () => {
     }, []);
 
     return (
-        <SafeAreaView style={{}}>
+        <SafeAreaView style={styles.container}>
             {loading ? (
                 <LoadingIndicator />
             ) : (
@@ -61,7 +67,7 @@ export const PurchaseHistoryScreen = () => {
                     {purchases && purchases.length >= 1 ? (
                         <PurchaseHistory purchases={purchases} />
                     ) : (
-                        <Text>Sem compras anteriores</Text>
+                        <Text style={styles.noPurchasesText}>Sem compras anteriores</Text>
                     )}
                 </>
             )}
@@ -70,8 +76,58 @@ export const PurchaseHistoryScreen = () => {
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#f0f9eb', // cor de fundo
+    },
     purchaseContainer: {
         borderWidth: 1,
-        margin: 4,
+        borderColor: '#aed581', // cor da borda
+        borderRadius: 10,
+        marginHorizontal: 20,
+        marginVertical: 10,
+        padding: 15,
+        backgroundColor: '#ffffff', // cor do fundo do contêiner
     },
-})
+    sectionTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        color: '#2e7d32', // cor do texto (destaque)
+    },
+    itemsContainer: {
+        marginBottom: 10,
+    },
+    itemContainer: {
+        marginBottom: 5,
+    },
+    itemDescription: {
+        fontSize: 16,
+        color: '#333333', // cor do texto (destaque)
+        fontWeight: 'bold',
+    },
+    itemPrice: {
+        fontSize: 14,
+        color: '#558b2f', // cor do texto (destaque)
+    },
+    itemQuantity: {
+        fontSize: 14,
+        color: '#558b2f', // cor do texto
+    },
+    total: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginTop: 10,
+        color: '#2e7d32', // cor do texto (destaque)
+    },
+    date: {
+        fontSize: 14,
+        color: '#757575', // cor do texto
+    },
+    noPurchasesText: {
+        fontSize: 16,
+        textAlign: 'center',
+        marginTop: 20,
+        color: '#757575', // cor do texto (destaque)
+    }
+});
