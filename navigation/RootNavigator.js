@@ -17,16 +17,16 @@ export const RootNavigator = ({ navigation }) => {
 
   useEffect(() => {
     // onAuthStateChanged returns an unsubscriber
+    let userFromDB;
     const unsubscribeAuthStateChanged = onAuthStateChanged(
       auth,
       async (authenticatedUser) => {
         if (authenticatedUser) {
           const userRef = doc(db, "users", auth.currentUser.uid);
           const userSnapshot = await getDoc(userRef)
-          const user = userSnapshot.data()
-          authenticatedUser.role = user.role;
+          userFromDB = userSnapshot.data();
         }
-        authenticatedUser ? setUser(authenticatedUser) : setUser(null);
+        authenticatedUser ? setUser({...authenticatedUser, ...userFromDB}) : setUser(null);
         setIsLoading(false);
       }
     );
