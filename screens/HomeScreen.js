@@ -25,20 +25,20 @@ export const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-<Header/>
-      {loading ? (
-        <LoadingIndicator />
-      ) : (
-        <>
-          {lastPurchase ? (
-            <LastPurchase purchase={lastPurchase} />
-          ) : (
-            <Text>Sem compras anteriores</Text>
-          )}
-        </>
-      )}
-<Destaque/>
-</ScrollView>
+        <Header />
+        {loading ? (
+          <LoadingIndicator />
+        ) : (
+          <>
+            {lastPurchase ? (
+              <LastPurchase purchase={lastPurchase} />
+            ) : (
+              <Text>Sem compras anteriores</Text>
+            )}
+          </>
+        )}
+        <Destaque />
+      </ScrollView>
     </SafeAreaView>
   );
 };
