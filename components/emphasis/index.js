@@ -13,12 +13,12 @@ export default function Destaque() {
         {
             description: "SABÃO DE COCO",
             img_url: "https://superprix.vteximg.com.br/arquivos/ids/178997-600-600/Sabao-Pedra-Barra-Coco-100g-Flow-Pack-518948.png?v=636936096853970000",
-            unit_price: 2.5
+            unit_price: 2.50
         },  
         {
             description: "SABÃO DE COCO",
             img_url: "https://superprix.vteximg.com.br/arquivos/ids/178997-600-600/Sabao-Pedra-Barra-Coco-100g-Flow-Pack-518948.png?v=636936096853970000",
-            unit_price: 2.5
+            unit_price: 2.50
         },
                {
             description: "MUCILON NESTLE SACHE 180G AVEIA TRIGO",

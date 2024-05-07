@@ -78,22 +78,22 @@ export const PurchaseHistoryScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f0f9eb', // cor de fundo
+        backgroundColor: '#f3f3f3', // cor de fundo
     },
     purchaseContainer: {
         borderWidth: 1,
-        borderColor: '#aed581', // cor da borda
+        borderColor: '#ccc', // cor da borda
         borderRadius: 10,
         marginHorizontal: 20,
         marginVertical: 10,
         padding: 15,
-        backgroundColor: '#ffffff', // cor do fundo do contêiner
+        backgroundColor: '#fff', // cor do fundo do contêiner
     },
     sectionTitle: {
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
-        color: '#2e7d32', // cor do texto (destaque)
+        color: '#333', // cor do texto (destaque)
     },
     itemsContainer: {
         marginBottom: 10,
@@ -103,31 +103,31 @@ const styles = StyleSheet.create({
     },
     itemDescription: {
         fontSize: 16,
-        color: '#333333', // cor do texto (destaque)
+        color: '#333', // cor do texto (destaque)
         fontWeight: 'bold',
     },
     itemPrice: {
         fontSize: 14,
-        color: '#558b2f', // cor do texto (destaque)
+        color: '#666', // cor do texto (destaque)
     },
     itemQuantity: {
         fontSize: 14,
-        color: '#558b2f', // cor do texto
+        color: '#666', // cor do texto
     },
     total: {
         fontSize: 16,
         fontWeight: 'bold',
         marginTop: 10,
-        color: '#2e7d32', // cor do texto (destaque)
+        color: '#333', // cor do texto (destaque)
     },
     date: {
         fontSize: 14,
-        color: '#757575', // cor do texto
+        color: '#999', // cor do texto
     },
     noPurchasesText: {
         fontSize: 16,
         textAlign: 'center',
         marginTop: 20,
-        color: '#757575', // cor do texto (destaque)
+        color: '#999', // cor do texto (destaque)
     }
 });

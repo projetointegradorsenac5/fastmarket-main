@@ -1,22 +1,17 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, Image } from 'react-native';
 import styles from './style';
+import { AuthenticatedUserContext } from '../../providers';
 
- const Header = () => {
+const Header = () => {
+  const { user } = useContext(AuthenticatedUserContext); // Assumindo que o contexto fornece informações sobre o usuário, incluindo o nome e a foto
+
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        {/* Perfil */}
-        <View style={styles.profile}>
-          {/* Adicione aqui a imagem do perfil */}
-        </View>
-
-      </View>
+      <Image source={{uri: user.photo_url}} style={styles.photo} />
+      <Text style={styles.greeting}>Olá, {user.name}</Text>
     </View>
   );
 };
 
-
-
-export default Header
+export default Header;
